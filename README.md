@@ -263,7 +263,8 @@ docker run --rm --init -v $PWD:/home/marp/app/ -e LANG=$LANG marpteam/marp-cli -
 
 ## 📄 ライセンス
 
-このテンプレートはMITライセンスの下で提供されています。
+このテンプレートはCoconala Internal Use Licenseの下で提供されています。  
+株式会社ココナラの社員のみが利用可能です。詳細は [LICENSE](LICENSE) ファイルをご確認ください。
 
 ---
 
