@@ -1,0 +1,191 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Marp Presentation Templates - Development Guide
+
+## Overview
+This project contains a Marp slide template with custom Coconala branding, featuring a sophisticated 6-chapter system with automatic triangular badges, colors, and layouts.
+
+## Project Structure
+
+### Key Files
+- [coconala-presentation.md](mdc:coconala-presentation.md) - Main template with sample content
+- [coconala-theme/coconala-pop.css](mdc:coconala-theme/coconala-pop.css) - Custom Marp theme
+- [README.md](mdc:README.md) - Usage documentation
+
+### Directory Structure
+```
+coconala-theme/
+├── coconala-pop.css           # Main CSS theme
+└── assets/
+    ├── fonts/M_PLUS_1p/       # Japanese fonts
+    └── images/                # SVG assets (triangles, backgrounds)
+        ├── triangle-with-1.svg ~ triangle-with-6.svg
+        ├── title_bg.svg, agenda_bg.svg
+        ├── chapter_1_bg.svg ~ chapter_6_bg.svg
+        └── closing_page_bg.svg
+```
+
+## Chapter System Architecture
+
+### Two-Page Chapter Structure
+Each chapter consists of exactly 2 pages in this order:
+1. **chapter-intro** - Content page with "Chapter X" prefix and colored styling
+2. **chapter-page** - Title page with triangle badge + title + background
+
+### Chapter Classes and Colors
+- **Chapter 1**: Blue (`#0085ff`) - `chapter-intro-01`, `chapter-page-01`
+- **Chapter 2**: Green (`#00c48f`) - `chapter-intro-02`, `chapter-page-02`
+- **Chapter 3**: Yellow (`#ffcc00`) - `chapter-intro-03`, `chapter-page-03`
+- **Chapter 4**: Orange (`#ff9b35`) - `chapter-intro-04`, `chapter-page-04`
+- **Chapter 5**: Pink (`#ff4a8c`) - `chapter-intro-05`, `chapter-page-05`
+- **Chapter 6**: Purple (`#9164ff`) - `chapter-intro-06`, `chapter-page-06`
+
+## CSS Design Principles
+
+### Separation of Concerns
+- **CSS**: Common styles, layout rules, color definitions only
+- **Markdown**: Individual content, titles, text
+- **Never**: Put specific slide content in CSS files
+
+### Triangle Icon System
+- Automatically generated via `h1::before` pseudo-elements
+- Each chapter gets appropriate `triangle-with-X.svg` background
+- Positioned at `left: -80px` relative to h1 title
+
+### Important CSS Patterns
+```css
+/* Use !important to override Marp defaults */
+.chapter-page h1 { color: #0085ff !important; }
+
+/* Pseudo-element for triangle icons */
+.chapter-page h1::before {
+  content: '';
+  position: absolute;
+  left: -80px;
+  background-image: url('./assets/images/triangle-with-1.svg');
+}
+```
+
+## Layout Patterns
+
+### Chapter Content Layouts
+- **equal**: 5:5 split - `<div class="chapter-content equal">`
+- **single**: Full width - `<div class="chapter-content single">`
+- **ratio-7-3**: 7:3 split - `<div class="chapter-content ratio-7-3">`
+
+### Content Areas
+```html
+<div class="chapter-content equal">
+  <div class="content-left">...</div>
+  <div class="content-right">...</div>
+</div>
+```
+
+## Slide Types and Usage
+
+### Title Slide
+```markdown
+<!-- _class: title-slide -->
+<!-- _backgroundImage: url('coconala-theme/assets/images/title_bg.svg') -->
+
+# Main Title<br />Subtitle
+
+<div class="subtitle">Event / Date<br/>Speaker Name</div>
+```
+
+### Agenda Slide
+```markdown
+<!-- _class: agenda -->
+<!-- _backgroundImage: url('coconala-theme/assets/images/agenda_bg.svg') -->
+
+# アジェンダ
+
+- **Chapter Title 1**
+- **Chapter Title 2**
+...
+```
+
+### Chapter Intro Page
+```markdown
+<!-- _class: chapter-intro chapter-intro-01 -->
+<!-- _backgroundImage: url('coconala-theme/assets/images/chapter_1_bg.svg') -->
+
+# Chapter Title
+```
+
+### Chapter Page (with content)
+```markdown
+<!-- _class: chapter-page chapter-page-01 -->
+
+# Chapter Title
+
+<div class="chapter-message">
+  Key message or summary
+</div>
+
+<div class="chapter-content equal">
+  <div class="content-left">
+    <h3>Left Content</h3>
+    <ul><li>Point 1</li><li>Point 2</li></ul>
+  </div>
+  <div class="content-right">
+    <h3>Right Content</h3>
+    <p>Description text</p>
+  </div>
+</div>
+```
+
+### Closing Page
+```markdown
+<!-- _class: closing-page -->
+<!-- _backgroundImage: url('coconala-theme/assets/images/closing_page_bg.svg') -->
+
+# Thank You
+
+## Contact
+
+<div class="subtitle">Message</div>
+<div class="contact-info">Contact details</div>
+```
+
+## Development Best Practices
+
+### When Creating New Presentations
+1. Copy [coconala-presentation.md](mdc:coconala-presentation.md) as starting template
+2. Replace placeholder content with actual content
+3. Keep the chapter structure (intro → page pattern)
+4. Use appropriate layout patterns for content
+5. Ensure all referenced background images exist
+
+### When Modifying CSS
+1. Test changes with Docker: `--theme coconala-theme/coconala-pop.css`
+2. Use `!important` to override Marp defaults when necessary
+3. Keep individual content out of CSS - use Markdown instead
+4. Maintain color consistency across chapter elements
+
+### Content Guidelines
+- Keep chapter-page content concise (fits in height constraints)
+- Use consistent heading levels (h3 for section titles)
+- Leverage CSS variables for brand colors: `var(--coco-blue)`
+- Test with actual content before finalizing layouts
+
+## Troubleshooting
+
+### Common Issues
+- **Triangle not showing**: Check `triangle-with-X.svg` files exist
+- **Layout breaks**: Content too long, use shorter text
+- **Colors wrong**: Verify chapter class numbers (01-06)
+- **Fonts missing**: Ensure M_PLUS_1p fonts are present
+
+### Testing Workflow
+1. Generate PNG for quick visual check: `--image png`
+2. Clean up test files: `rm *.png`
+3. Generate final PDF when satisfied: `--pdf`
+
+## File Path Conventions
+- CSS uses relative paths: `./assets/images/file.svg`
+- Markdown uses theme-relative: `coconala-theme/assets/images/file.svg`
+- All paths relative to their file locations

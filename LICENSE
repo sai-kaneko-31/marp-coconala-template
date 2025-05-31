@@ -1,0 +1,43 @@
+Coconala Internal Use License
+
+Copyright (c) 2025 sai-kaneko-31
+
+The use of this software and associated documentation files (the "Software") 
+is permitted only to employees of Coconala Inc. under the following conditions:
+
+Terms of Use:
+1. This Software may only be used by individuals who are currently employed 
+   by Coconala Inc. at the time of use, including full-time employees, 
+   contract employees, temporary workers, interns, and other persons 
+   with employment relationships.
+
+2. Forking, cloning, or downloading of this repository by anyone other than 
+   Coconala Inc. employees is prohibited, even though such actions may be 
+   technically unrestricted due to the public nature of this repository.
+
+3. Modifications are permitted only for internal company use by Coconala Inc. 
+   employees, but distribution of modified versions outside the company 
+   is prohibited.
+
+4. Commercial use is limited to business purposes of Coconala Inc. only.
+
+5. Upon termination of employment, the right to use this Software expires, 
+   and all copies in possession must be deleted.
+
+Notice:
+While this repository is publicly accessible, the license terms above remain 
+in effect. Unauthorized use by non-Coconala Inc. employees, even if technically 
+possible, constitutes a violation of this license agreement.
+
+Disclaimer:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Contact:
+For questions regarding this license, please contact sai-kaneko-31. 
