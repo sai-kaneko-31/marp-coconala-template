@@ -67,6 +67,7 @@ section {
   line-height: 1.2 !important;
   font-weight: 700 !important;
   text-align: left !important;
+  margin-top: 80px !important;
 }
 
 .title-slide .subtitle {
@@ -113,14 +114,16 @@ section:not(.chapter) h4 {
   padding: 0;
   counter-reset: agendaitem;
   margin-left: 1.5em;
+  margin-top: 30px !important;
 }
 
 .agenda li {
   position: relative;
   font-weight: 600;
-  margin: 0.8em 0;
+  margin: 1.8em 0 !important;
   padding-left: 2.5em;
-  font-size: 1.4rem;
+  font-size: 1.6rem !important;
+  line-height: 1.4 !important;
 }
 
 .agenda li::before {
@@ -244,7 +247,7 @@ table tr:not(:first-child) {
   width: 1000px;
   display: flex;
   gap: 30px;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 /* Layout: equal (5:5) */
@@ -284,6 +287,8 @@ table tr:not(:first-child) {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   overflow: hidden; /* 高さ制限を超えた内容は隠す */
 }
 
@@ -330,7 +335,8 @@ table tr:not(:first-child) {
   content: '';
   position: absolute;
   left: -80px;
-  top: 0;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   width: 60px;
   height: 60px;
   background-image: url('./assets/images/triangle-with-1.svg');
@@ -510,4 +516,27 @@ pre, code { font-size: 0.8rem; }
 
 .closing-page .contact-info a:hover {
   text-decoration: underline;
+}
+
+/* ---------- Profile Slide Styles ---------- */
+
+/* Profile slide: Remove background from image container */
+.profile-slide .content-right {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Profile slide: Circular image */
+.profile-slide .content-right img {
+  width: 300px !important;
+  height: 300px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: block !important;
+  margin: 0 !important;
 }
